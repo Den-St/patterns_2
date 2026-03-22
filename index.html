@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Управління користувачами — Singleton</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <h1>Система управління користувачами (Singleton)</h1>
+
+  <!-- Вибір ролі -->
+  <section class="panel">
+    <h2>Діяти від імені:</h2>
+    <select id="actor-select" onchange="switchActor()"></select>
+    <span id="actor-role"></span>
+  </section>
+
+  <!-- Таблиця -->
+  <section class="panel">
+    <h2>Користувачі</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th><th>Ім'я</th><th>Email</th><th>Роль</th><th>⚠</th><th>Дії</th>
+        </tr>
+      </thead>
+      <tbody id="users-table"></tbody>
+    </table>
+  </section>
+
+  <!-- Пошук -->
+  <section class="panel">
+    <h2>Пошук користувача</h2>
+    <div class="form-row">
+      <input id="search-query" placeholder="Ім'я, email або роль…" />
+      <button onclick="searchUsers()">Шукати</button>
+      <button class="btn-reset" onclick="clearSearch()">Скинути</button>
+    </div>
+    <table id="search-results-table" style="display:none;">
+      <thead><tr><th>ID</th><th>Ім'я</th><th>Email</th><th>Роль</th></tr></thead>
+      <tbody id="search-results"></tbody>
+    </table>
+  </section>
+
+  <!-- Додати -->
+  <section class="panel">
+    <h2>Додати користувача</h2>
+    <div class="form-row">
+      <input id="new-name" placeholder="Ім'я" />
+      <input id="new-email" placeholder="Email" />
+      <input id="new-pass" type="password" placeholder="Пароль" />
+      <select id="new-role">
+        <option value="User">User</option>
+        <option value="Moderator">Moderator</option>
+        <option value="Admin">Admin</option>
+      </select>
+      <button onclick="addUser()">Створити</button>
+    </div>
+  </section>
+
+  <!-- Видалити всіх за критерієм -->
+  <section class="panel">
+    <h2>Видалити всіх за роллю</h2>
+    <div class="form-row">
+      <select id="del-role">
+        <option value="User">User</option>
+        <option value="Moderator">Moderator</option>
+        <option value="Admin">Admin</option>
+      </select>
+      <button class="btn-del" onclick="deleteAllByRole()">Видалити всіх</button>
+    </div>
+  </section>
+
+  <!-- Перевірка пароля -->
+  <section class="panel">
+    <h2>Перевірка пароля</h2>
+    <div class="form-row">
+      <input id="chk-id" type="number" placeholder="ID" min="1" />
+      <input id="chk-pass" type="password" placeholder="Пароль" />
+      <button onclick="checkPass()">Перевірити</button>
+    </div>
+  </section>
+
+  <!-- Лог -->
+  <section class="panel">
+    <h2>Журнал подій</h2>
+    <div id="log"></div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
