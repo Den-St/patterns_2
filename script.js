@@ -13,7 +13,7 @@ class User {
     this.name = name;
     this.email = email;
     this.#password = password;
-    this.#role = this.#password;
+    this.#role = 'User';
     this.#warnings = 0;
     this.#isMuted = false;
     this.#muteEnd = null;
